@@ -20,10 +20,10 @@ for repo in repo_names:
     print(f"\t- github.com/{user}/{repo}/")
     repo_url = urljoin(base_url, repo + '/')
     traffic = requests.get(urljoin(repo_url, 'traffic/views'),
-                           auth=HTTPBasicAuth('avcourt', key)).json()
+                           auth=HTTPBasicAuth(user, key)).json()
 
     clones = requests.get(urljoin(repo_url, 'traffic/clones'),
-                        auth=HTTPBasicAuth('avcourt', key)).json()["count"]
+                        auth=HTTPBasicAuth(user, key)).json()["count"]
 
     insights.append({'repo': repo,
                      'views': traffic['count'],

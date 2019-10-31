@@ -31,6 +31,6 @@ for repo in repo_names:
                      'clones': clones
                      })
 
-print("\n-- STATS ------------------ Views / Clones --")
+print("\n-- INSIGHTS --------------- Views / Clones --")
 print("---------------------------------------------")
 print(pandas.DataFrame(insights).to_string(index=False))

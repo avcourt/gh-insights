@@ -1,11 +1,13 @@
+#!/usr/bin/python3
+
 import pandas
 import os
 import requests
 from requests.auth import HTTPBasicAuth
 from urllib.parse import urljoin
 
-user = 'avcourt'
-key = os.environ.get('GH_API')
+user = 'avcourt'                # your github username
+key = os.environ.get('GH_API')  # your secret access token. you can hardcode yours.
 
 repos_url = f'https://api.github.com/users/{user}/repos'
 repo_names = [repo["name"] for repo in requests.get(repos_url).json()]

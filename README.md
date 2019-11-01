@@ -10,11 +10,15 @@
 `$ pip3 install -r requirements.txt`
 
 ## Initial Setup
-- Create a GitHub API [Personal Access Token]( https://github.com/settings/tokens) if you don't already have one.
+- Create a GitHub API [Personal Access Token](
+  https://github.com/settings/tokens) if you don't already have one. Needs only
+  the 'admin:public_repo' permission.
 - Set the `GH_API` environment variable from your shell:
   - `$ export GH_API=<your_access_key_here>`
-- ... or hardcode yours as the `key` variable in `traffic.py`:
-- Change `user` to your Github username in `traffic.py`
+- Set the `GH_USER` environment variable from your shell:
+  - `$ export GH_USER=<your username>`
 
 ## Run
-`$ python3 traffic.py`
+```bash
+$ GH_API=xxx GH_USER=avcourt python3 traffic.py
+```

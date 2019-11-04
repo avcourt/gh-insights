@@ -10,8 +10,10 @@ from requests.auth import HTTPBasicAuth
 
 def main():
     """Main cli"""
+
+    # check for user/key environment variables, uses 2nd param if none found
     user = os.environ.get("GH_USER", "avcourt")  # your github username
-    key = os.environ.get("GH_API")  # your secret access token. you can hardcode yours.
+    key = os.environ.get("GH_API", "yourkey")  # your secret access token
 
     repos_url = f"https://api.github.com/users/{user}/repos"
     repo_names = [repo["name"] for repo in requests.get(repos_url).json()]

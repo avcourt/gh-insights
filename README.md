@@ -1,6 +1,6 @@
 ***A short python script to see how many people are checking out your repositories.***
 
-![Repo Traffic](traffic.gif)
+![Repo Traffic](screenshot.gif)
 
 
 ## Dependencies

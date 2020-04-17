@@ -1,0 +1,67 @@
+#!/usr/bin/env python3.6
+
+import os
+from urllib.parse import urljoin
+
+import requests
+from requests.auth import HTTPBasicAuth
+
+GH_USERNAME = ""  # your github username
+GH_API_TOKEN = ""  # your github api token <https://github.com/settings/tokens>
+
+
+def main():
+    """Main cli"""
+
+    # check for user/api_key environment variables, uses 2nd param if none found
+    user = os.environ.get("GH_USER", GH_USERNAME)  # your github username
+    key = os.environ.get("GH_API", GH_API_TOKEN)  # your secret access token
+
+    if not user or not key:
+        print("No username/API token found")
+        if not user:
+            user = input("Enter GitHub username: ")
+        if not key:
+            key = input("Enter API token: ")
+
+    try:
+        repos_url = f"https://api.github.com/users/{user}/repos"
+        repo_names = [repo["name"] for repo in requests.get(repos_url).json()]
+
+        insights = []
+        base_url = f"https://api.github.com/repos/{user}/"
+
+        print("Getting traffic insights for repos:")
+        for repo in repo_names:
+            print(f"\t- github.com/{user}/{repo}/")
+            repo_url = urljoin(base_url, repo + "/")
+            traffic = requests.get(
+                urljoin(repo_url, "traffic/views",), auth=HTTPBasicAuth(user, key),
+            ).json()
+
+            clones = requests.get(
+                urljoin(repo_url, "traffic/clones",), auth=HTTPBasicAuth(user, key),
+            ).json()["count"]
+
+            insights.append(
+                {
+                    "repo": repo,
+                    "views": traffic["count"],
+                    "uniques": traffic["uniques"],
+                    "clones": clones,
+                }
+            )
+
+        print("\n-- INSIGHTS ------------------------- Views / Clones ----")
+        print("---------------------------------------------------------")
+        for insight in insights:
+            print(
+                f'{insight["repo"]:20} {insight["views"]:10} {insight["uniques"]:10} {insight["clones"]:10}'
+            )
+
+    except:
+        print("Whoops! Something went wrong. Wrong username/API token?")
+
+
+if __name__ == "__main__":
+    main()

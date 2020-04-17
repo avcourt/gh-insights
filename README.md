@@ -4,6 +4,8 @@
 
 
 ## Dependencies
+
+- python3.6 for f-strings 
 - requests
 
 `$ pip3 install -r requirements.txt`
@@ -24,7 +26,7 @@ OR:
   ```bash
   $ export GH_USER=<your username>
   ```
-  **Note:** If `GH_USER` or `GH_API` is not found (either in your environment or in `ghinsights` source itself), you will be prompted for them at the console upon running `ghinsights`.
+  ***Note:** If `GH_USER` or `GH_API` is not found (either in your environment or in `ghinsights` source itself), you will be prompted for them at the console upon running `ghinsights`.*
 
 ## Run
 
@@ -42,7 +44,7 @@ or pass them in via the command-line:
 ```bash
 $ GH_API=xyourxsecretxapixkeyx GH_USER=avcourt python3 ghinsights
 ```  
-or hardcode them in `ghinsights` source:
+or hardcode them in `ghinsights` source (careful not expose these to the public!):
 ```python
 GH_USERNAME = ""  # your github username
 GH_API_TOKEN = ""  # your github api token <https://github.com/settings/tokens>

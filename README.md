@@ -44,7 +44,7 @@ or pass them in via the command-line:
 ```bash
 $ GH_API=xyourxsecretxapixkeyx GH_USER=avcourt python3 ghinsights
 ```  
-or hardcode them in `ghinsights` source (careful not expose these to the public!):
+or hardcode them in `ghinsights` source (be careful not to expose these to the public!):
 ```python
 GH_USERNAME = ""  # your github username
 GH_API_TOKEN = ""  # your github api token <https://github.com/settings/tokens>

@@ -27,13 +27,27 @@ OR:
   **Note:** If `GH_USER` or `GH_API` is not found (either in your environment or in `ghinsights` source itself), you will be prompted for them at the console upon running `ghinsights`.
 
 ## Run
+
+You have several options for how you'd like to set your credentials:
+  - through env vars
+  - passing them in as args to `ghinsights`
+  - hardcoding them in the python source
+  - do none of the above and enter them when prompted
+  
 If you've set the above environment vars:
 ```bash
-$ ./ghinsights`
+$ ./ghinsights
 ```
 or pass them in via the command-line:
 ```bash
 $ GH_API=xyourxsecretxapixkeyx GH_USER=avcourt python3 ghinsights
+```  
+or hardcode them in `ghinsights` source:
+```python
+GH_USERNAME = ""  # your github username
+GH_API_TOKEN = ""  # your github api token <https://github.com/settings/tokens>
 ```
 or pass them in when prompted:
-`$ ./ghinsights`
+```bash
+$ ./ghinsights
+```

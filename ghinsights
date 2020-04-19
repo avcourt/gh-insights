@@ -31,7 +31,7 @@ def main():
         insights = []
         base_url = f"https://api.github.com/repos/{user}/"
 
-        print("Getting traffic insights for repos:")
+        print(f"Getting traffic insights for {user}'s repos:")
         for repo in repo_names:
             print(f"\t- github.com/{user}/{repo}/")
             repo_url = urljoin(base_url, repo + "/")
@@ -52,11 +52,12 @@ def main():
                 }
             )
 
-        print("\n-- INSIGHTS ------------------------- Views / Clones ----")
-        print("---------------------------------------------------------")
+        print("\n----------------------------------------------------------")
+        print(f'{"Repository":22} {"Views":^10} {"Uniques":^10} {"Clones":^10}')
+        print("----------------------------------------------------------")
         for insight in insights:
             print(
-                f'{insight["repo"]:20} {insight["views"]:10} {insight["uniques"]:10} {insight["clones"]:10}'
+                f'{insight["repo"]:22} {insight["views"]:^10} {insight["uniques"]:^10} {insight["clones"]:^10}'
             )
 
     except:

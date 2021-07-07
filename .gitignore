@@ -1,5 +1,4 @@
 venv
 .vscode
 .envrc
-.env
 .idea
